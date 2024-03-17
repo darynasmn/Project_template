@@ -1,5 +1,21 @@
-def main():
-    pass
+from app.io.input import input_text_from_console as input_console
+from app.io.input import read_from_file_with_builtin as read_builtin
+from app.io.input import read_from_file_with_pandas as read_pandas
+from app.io.output import print_to_console
+from app.io.output import write_to_file_with_builtin as write_to_file
 
-if "__init__" == "__main__":
+def main():
+
+    text_from_console = input_console()
+
+    content_from_builtin = read_builtin("file.txt")
+
+    data_from_pandas = read_pandas("file.csv")
+    all_texts = [text_from_console, content_from_builtin, str(data_from_pandas)]
+
+    print_to_console(all_texts)
+    write_to_file("output.txt", all_texts)
+    
+
+if __name__ == "__main__":
     main()
